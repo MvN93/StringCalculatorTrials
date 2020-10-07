@@ -2,6 +2,7 @@ package org.example.mike.StringCalculator.generalTrials;
 
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
     private static final int EMPTY_STRING_SUM = 0;
@@ -13,13 +14,14 @@ public class StringCalculator {
             return EMPTY_STRING_SUM;
         }
         if(emptyInput == false){
-            if(input.contains(",") || input.contains("mn")){
+            if(input.contains(",") || input.contains("\\n")){
                 String[] arrayOfSeperatedNumbersByOnlyFirstDelimiter = input.split(",");
 
                 ArrayList<String> arrayOfSeperatedNumbersByBothDelimiters = new ArrayList<String>();
 
                 for (String seperatedString : arrayOfSeperatedNumbersByOnlyFirstDelimiter){
-                    String[] arrayOfSeperatedStringSeperatedBySecondDelimiter = seperatedString.split("mn");
+                    String seperator = "\\n";
+                    String[] arrayOfSeperatedStringSeperatedBySecondDelimiter = seperatedString.split(Pattern.quote(seperator));
                     for(String seperatedNumberAsString : arrayOfSeperatedStringSeperatedBySecondDelimiter){
                         arrayOfSeperatedNumbersByBothDelimiters.add(seperatedNumberAsString);
                     }

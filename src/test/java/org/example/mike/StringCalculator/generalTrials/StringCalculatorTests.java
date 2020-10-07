@@ -56,7 +56,7 @@ public class StringCalculatorTests {
 
     @Test
     void inputTwoNumbersSeperatedByOtherGivenDelimiterAndReturnSum(){
-        String twoNumberStringSeperatedByOtherInput = "1mn2";
+        String twoNumberStringSeperatedByOtherInput = "1\\n2";
         int testResult = stringCalculator.sum(twoNumberStringSeperatedByOtherInput);
         int expectedResult = 3;
         assertThat(testResult).isEqualTo(expectedResult);
