@@ -62,4 +62,19 @@ public class StringCalculatorTests {
         assertThat(testResult).isEqualTo(expectedResult);
     }
 
+    @Test
+    void inputThreeNumbersSeperatedByOtherGivenDelimiterAndReturnSum(){
+        String twoNumberStringSeperatedByOtherInput = "1\\n2,3";
+        int testResult = stringCalculator.sum(twoNumberStringSeperatedByOtherInput);
+        int expectedResult = 6;
+        assertThat(testResult).isEqualTo(expectedResult);
+    }
+    @Test
+    void inputFiveNumbersSeperatedByOtherGivenDelimiterAndReturnSum(){
+        String twoNumberStringSeperatedByOtherInput = "1\\n2,3,5\\n2";
+        int testResult = stringCalculator.sum(twoNumberStringSeperatedByOtherInput);
+        int expectedResult = 13;
+        assertThat(testResult).isEqualTo(expectedResult);
+    }
+
 }

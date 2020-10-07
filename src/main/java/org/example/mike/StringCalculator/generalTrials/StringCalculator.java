@@ -21,7 +21,9 @@ public class StringCalculator {
 
                 for (String seperatedString : arrayOfSeperatedNumbersByOnlyFirstDelimiter){
                     String seperator = "\\n";
+
                     String[] arrayOfSeperatedStringSeperatedBySecondDelimiter = seperatedString.split(Pattern.quote(seperator));
+
                     for(String seperatedNumberAsString : arrayOfSeperatedStringSeperatedBySecondDelimiter){
                         arrayOfSeperatedNumbersByBothDelimiters.add(seperatedNumberAsString);
                     }
