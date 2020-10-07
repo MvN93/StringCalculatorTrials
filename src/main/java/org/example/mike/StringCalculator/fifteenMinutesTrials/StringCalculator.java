@@ -2,17 +2,18 @@ package org.example.mike.StringCalculator.fifteenMinutesTrials;
 
 public class StringCalculator {
     public int sum(String input) {
-        boolean emptyStringInput = input.isEmpty();
-        if(emptyStringInput == true){
+        boolean emptyInput = input.isEmpty();
+        if(emptyInput == true){
             return 0;
         }
-        else if(emptyStringInput == false){
+        if(emptyInput == false){
             if(input.contains(",")){
-                String[] numbers = input.split(",");
-                int sum;
-                int getal0 = Integer.parseInt(numbers[0]);
-                int getal1 = Integer.parseInt(numbers[1]);
-                sum =  getal0 + getal1;
+                String[] arrayStringsGetallen = input.split(",");
+                int sum = 0;
+                for(String getalAlsString : arrayStringsGetallen){
+                    int getal = Integer.parseInt(getalAlsString);
+                    sum = sum + getal;
+                }
                 return sum;
             }
             else{
