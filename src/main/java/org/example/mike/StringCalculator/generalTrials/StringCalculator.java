@@ -10,6 +10,10 @@ public class StringCalculator {
         if(emptyInput == true){
             return EMPTY_STRING_SUM;
         }
+        if(emptyInput == false){
+            int inputAsNumber = Integer.parseInt(input);
+            return inputAsNumber;
+        }
         throw new NotYetImplementedException("This functionality is not yet implemented.");
     }
 

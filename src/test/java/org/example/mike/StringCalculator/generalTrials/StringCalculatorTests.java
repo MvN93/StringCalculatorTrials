@@ -20,4 +20,12 @@ public class StringCalculatorTests {
         int expectedResult = StringCalculator.getEmptyStringSum();
         assertThat(testResult).isEqualTo(expectedResult);
     }
+
+    @Test
+    void singleNumber2InputReturn2AsSum(){
+        String singleNumberString = "2";
+        int testResult = stringCalculator.sum(singleNumberString);
+        int expectedResult = 2;
+        assertThat(testResult).isEqualTo(expectedResult);
+    }
 }
