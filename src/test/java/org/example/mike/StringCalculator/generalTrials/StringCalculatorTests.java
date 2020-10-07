@@ -1,16 +1,23 @@
 package org.example.mike.StringCalculator.generalTrials;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringCalculatorTests {
 
+    StringCalculator stringCalculator;
+
+    @BeforeEach
+    void setUp() {
+        stringCalculator = new StringCalculator();
+    }
+
     @Test
     void emptyStringInputReturnsZero(){
-        StringCalculator stringCalculator = new StringCalculator();
         String emptyString = "";
         int testResult = stringCalculator.sum(emptyString);
-        int expectedResult = 0;
+        int expectedResult = StringCalculator.getEmptyStringSum();
         assertThat(testResult).isEqualTo(expectedResult);
     }
 }

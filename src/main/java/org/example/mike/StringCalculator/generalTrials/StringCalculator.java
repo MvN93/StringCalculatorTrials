@@ -2,11 +2,18 @@ package org.example.mike.StringCalculator.generalTrials;
 
 
 public class StringCalculator {
+    private static final int EMPTY_STRING_SUM = 0;
 
     public int sum(String input) {
-        if(input.isEmpty()){
-            return 0;
+        boolean emptyInput = input.isEmpty();
+
+        if(emptyInput == true){
+            return EMPTY_STRING_SUM;
         }
         throw new NotYetImplementedException("This functionality is not yet implemented.");
+    }
+
+    public static int getEmptyStringSum(){
+        return EMPTY_STRING_SUM;
     }
 }
