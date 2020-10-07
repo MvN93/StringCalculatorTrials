@@ -1,6 +1,8 @@
 package org.example.mike.StringCalculator.generalTrials;
 
 
+import java.util.ArrayList;
+
 public class StringCalculator {
     private static final int EMPTY_STRING_SUM = 0;
 
@@ -11,11 +13,21 @@ public class StringCalculator {
             return EMPTY_STRING_SUM;
         }
         if(emptyInput == false){
-            if(input.contains(",")){
-                String[] arrayOfSeperatedNumbersAsStrings = input.split(",");
+            if(input.contains(",") || input.contains("mn")){
+                String[] arrayOfSeperatedNumbersByOnlyFirstDelimiter = input.split(",");
+
+                ArrayList<String> arrayOfSeperatedNumbersByBothDelimiters = new ArrayList<String>();
+
+                for (String seperatedString : arrayOfSeperatedNumbersByOnlyFirstDelimiter){
+                    String[] arrayOfSeperatedStringSeperatedBySecondDelimiter = seperatedString.split("mn");
+                    for(String seperatedNumberAsString : arrayOfSeperatedStringSeperatedBySecondDelimiter){
+                        arrayOfSeperatedNumbersByBothDelimiters.add(seperatedNumberAsString);
+                    }
+                }
+
                 int sum = 0;
 
-                for (String seperatedNumberAsString : arrayOfSeperatedNumbersAsStrings){
+                for (String seperatedNumberAsString : arrayOfSeperatedNumbersByBothDelimiters){
                     int seperatedNumber = Integer.parseInt(seperatedNumberAsString);
                     sum = sum + seperatedNumber;
                 }

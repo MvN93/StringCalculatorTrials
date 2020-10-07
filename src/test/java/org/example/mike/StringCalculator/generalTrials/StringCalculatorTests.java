@@ -54,5 +54,12 @@ public class StringCalculatorTests {
     }
 
 
+    @Test
+    void inputTwoNumbersSeperatedByOtherGivenDelimiterAndReturnSum(){
+        String twoNumberStringSeperatedByOtherInput = "1mn2";
+        int testResult = stringCalculator.sum(twoNumberStringSeperatedByOtherInput);
+        int expectedResult = 3;
+        assertThat(testResult).isEqualTo(expectedResult);
+    }
 
 }
