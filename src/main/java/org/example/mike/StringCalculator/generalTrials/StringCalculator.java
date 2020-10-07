@@ -11,9 +11,24 @@ public class StringCalculator {
             return EMPTY_STRING_SUM;
         }
         if(emptyInput == false){
-            int inputAsNumber = Integer.parseInt(input);
-            return inputAsNumber;
+            if(input.contains(",")){
+                String[] arrayOfSeperatedNumbersAsStrings = input.split(",");
+                int sum = 0;
+
+                for (String seperatedNumberAsString : arrayOfSeperatedNumbersAsStrings){
+                    int seperatedNumber = Integer.parseInt(seperatedNumberAsString);
+                    sum = sum + seperatedNumber;
+                }
+
+                return sum;
+            }
+            else{
+                int inputAsNumber = Integer.parseInt(input);
+                return inputAsNumber;
+            }
+
         }
+
         throw new NotYetImplementedException("This functionality is not yet implemented.");
     }
 

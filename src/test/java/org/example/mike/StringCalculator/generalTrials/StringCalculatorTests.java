@@ -28,4 +28,31 @@ public class StringCalculatorTests {
         int expectedResult = 2;
         assertThat(testResult).isEqualTo(expectedResult);
     }
+
+    @Test
+    void inputNumbers2And3ReturnSum5(){
+        String twoNumberString = "2,3";
+        int testResult = stringCalculator.sum(twoNumberString);
+        int expectedResult = 5;
+        assertThat(testResult).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void inputThreeNumbersAndReturnSum(){
+        String threeNumberString = "2,3,4";
+        int testResult = stringCalculator.sum(threeNumberString);
+        int expectedResult = 9;
+        assertThat(testResult).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void inputFiveNumbersAndReturnSum(){
+        String fiveNumberString = "2,3,4,1,1";
+        int testResult = stringCalculator.sum(fiveNumberString);
+        int expectedResult = 11;
+        assertThat(testResult).isEqualTo(expectedResult);
+    }
+
+
+
 }
