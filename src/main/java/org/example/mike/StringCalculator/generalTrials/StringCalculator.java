@@ -24,13 +24,7 @@ public class StringCalculator {
 
                 String[] arrayOfSeperatedNumbersByGivenDelimiter = numbersString.split(delimiter);
 
-                int sum = 0;
-
-                for (String seperatedNumberAsString : arrayOfSeperatedNumbersByGivenDelimiter){
-                    int seperatedNumber = Integer.parseInt(seperatedNumberAsString);
-                    sum = sum + seperatedNumber;
-                }
-
+                int sum = determineSumArray(arrayOfSeperatedNumbersByGivenDelimiter);
                 return sum;
             }
             else if(input.contains(DEFAULT_DELIMITER) || input.contains("\\n")){
@@ -48,13 +42,7 @@ public class StringCalculator {
                     }
                 }
 
-                int sum = 0;
-
-                for (String seperatedNumberAsString : arrayOfSeperatedNumbersByBothDelimiters){
-                    int seperatedNumber = Integer.parseInt(seperatedNumberAsString);
-                    sum = sum + seperatedNumber;
-                }
-
+                int sum = determineSumArrayList(arrayOfSeperatedNumbersByBothDelimiters);
                 return sum;
             }
             else{
@@ -67,7 +55,32 @@ public class StringCalculator {
         throw new NotYetImplementedException("This functionality is not yet implemented.");
     }
 
+    private int determineSumArray(String[] numbersAsStrings){
+        int sum = 0;
+
+        for (String seperatedNumberAsString : numbersAsStrings){
+            int seperatedNumber = Integer.parseInt(seperatedNumberAsString);
+            sum = sum + seperatedNumber;
+        }
+
+        return sum;
+    }
+
+    private int determineSumArrayList(ArrayList<String> numbersAsStrings){
+        int sum = 0;
+
+        for (String seperatedNumberAsString : numbersAsStrings){
+            int seperatedNumber = Integer.parseInt(seperatedNumberAsString);
+            sum = sum + seperatedNumber;
+        }
+
+        return sum;
+    }
+
     public static int getEmptyStringSum(){
         return EMPTY_STRING_SUM;
     }
+
+
+
 }
