@@ -92,8 +92,8 @@ public class StringCalculatorTests {
             System.out.println(substring);
             System.out.println("");
         }
-        System.out.println(substringsNumbersAndDelimiter[0].substring(2,substringsNumbersAndDelimiter.length + 1));
-        */
+        System.out.println(substringsNumbersAndDelimiter[0].substring(2));
+         */
     }
 
     @Test
@@ -102,6 +102,18 @@ public class StringCalculatorTests {
         int testResult = stringCalculator.sum(twoNumbersSpecifyingPointCommaAsDelimiter);
         int expectedResult = 3;
         assertThat(testResult).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void throwExceptionWithNegativeNumber(){
+        String oneNegativeNumber = "//;\\n-1;2";
+        int testResult = stringCalculator.sum(oneNegativeNumber);
+    }
+
+    @Test
+    void throwTwoExceptionsWithTwoNegativeNumbers(){
+        String twoNegativeNumbers = "//;\\n-1;-2";
+        int testResult = stringCalculator.sum(twoNegativeNumbers);
     }
 
 }

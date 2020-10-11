@@ -19,11 +19,12 @@ public class StringCalculator {
             if(input.startsWith("//") == true){
                 String numberSeperator = "\\n";
                 String[] delimiterStringAndNumbersString = input.split(Pattern.quote(numberSeperator), 2); //makes 2 substrings;
-                String delimiter = delimiterStringAndNumbersString[0].substring(2,delimiterStringAndNumbersString.length + 1);
+                String delimiter = delimiterStringAndNumbersString[0].substring(2);
                 String numbersString = delimiterStringAndNumbersString[1];
 
                 String[] arrayOfSeperatedNumbersByGivenDelimiter = numbersString.split(delimiter);
 
+                checkForNegativeNumbersArray(arrayOfSeperatedNumbersByGivenDelimiter);
                 int sum = determineSumArray(arrayOfSeperatedNumbersByGivenDelimiter);
                 return sum;
             }
@@ -42,6 +43,7 @@ public class StringCalculator {
                     }
                 }
 
+                checkForNegativeNumbersArrayList(arrayOfSeperatedNumbersByBothDelimiters);
                 int sum = determineSumArrayList(arrayOfSeperatedNumbersByBothDelimiters);
                 return sum;
             }
@@ -76,6 +78,36 @@ public class StringCalculator {
 
         return sum;
     }
+
+
+    private void checkForNegativeNumbersArray(String[] arrayNumbersAsStrings){
+        ArrayList<String> negativeNumbers = new ArrayList<String>();
+        for(String numberAsString : arrayNumbersAsStrings){
+            if(numberAsString.contains("-")){
+                negativeNumbers.add(numberAsString);
+            }
+        }
+
+        if(negativeNumbers.isEmpty() == false){
+            throw new NegativeNumberException("Negative Numbers " + negativeNumbers.toString() + " are not accepted as input");
+        }
+    }
+
+    private void checkForNegativeNumbersArrayList(ArrayList<String> arrayListNumbersAsStrings){
+        ArrayList<String> negativeNumbers = new ArrayList<String>();
+        for(String numberAsString : arrayListNumbersAsStrings){
+            if(numberAsString.contains("-")){
+                negativeNumbers.add(numberAsString);
+            }
+        }
+
+        if(negativeNumbers.isEmpty() == false){
+            throw new NegativeNumberException("Negative Numbers " + negativeNumbers.toString() + " are not accepted as input");
+        }
+
+    }
+
+
 
     public static int getEmptyStringSum(){
         return EMPTY_STRING_SUM;
