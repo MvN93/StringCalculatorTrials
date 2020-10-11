@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
     private static final int EMPTY_STRING_SUM = 0;
+    private static final String DEFAULT_DELIMITER = ",";
 
     public int sum(String input) {
         boolean emptyInput = input.isEmpty();
@@ -14,8 +15,26 @@ public class StringCalculator {
             return EMPTY_STRING_SUM;
         }
         if(emptyInput == false){
-            if(input.contains(",") || input.contains("\\n")){
-                String[] arrayOfSeperatedNumbersByOnlyFirstDelimiter = input.split(",");
+            //if delimiter is given use that, else default
+            if(input.startsWith("//") == true){
+                String numberSeperator = "\\n";
+                String[] delimiterStringAndNumbersString = input.split(Pattern.quote(numberSeperator), 2); //makes 2 substrings;
+                String delimiter = delimiterStringAndNumbersString[0].substring(2,delimiterStringAndNumbersString.length + 1);
+                String numbersString = delimiterStringAndNumbersString[1];
+
+                String[] arrayOfSeperatedNumbersByGivenDelimiter = numbersString.split(delimiter);
+
+                int sum = 0;
+
+                for (String seperatedNumberAsString : arrayOfSeperatedNumbersByGivenDelimiter){
+                    int seperatedNumber = Integer.parseInt(seperatedNumberAsString);
+                    sum = sum + seperatedNumber;
+                }
+
+                return sum;
+            }
+            else if(input.contains(DEFAULT_DELIMITER) || input.contains("\\n")){
+                String[] arrayOfSeperatedNumbersByOnlyFirstDelimiter = input.split(DEFAULT_DELIMITER);
 
                 ArrayList<String> arrayOfSeperatedNumbersByBothDelimiters = new ArrayList<String>();
 

@@ -2,6 +2,9 @@ package org.example.mike.StringCalculator.generalTrials;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.regex.Pattern;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringCalculatorTests {
@@ -55,7 +58,7 @@ public class StringCalculatorTests {
 
 
     @Test
-    void inputTwoNumbersSeperatedByOtherGivenDelimiterAndReturnSum(){
+    void inputTwoNumbersSeperatedByOtherDelimiterAndReturnSum(){
         String twoNumberStringSeperatedByOtherInput = "1\\n2";
         int testResult = stringCalculator.sum(twoNumberStringSeperatedByOtherInput);
         int expectedResult = 3;
@@ -63,17 +66,41 @@ public class StringCalculatorTests {
     }
 
     @Test
-    void inputThreeNumbersSeperatedByOtherGivenDelimiterAndReturnSum(){
+    void inputThreeNumbersSeperatedByOtherDelimitersAndReturnSum(){
         String twoNumberStringSeperatedByOtherInput = "1\\n2,3";
         int testResult = stringCalculator.sum(twoNumberStringSeperatedByOtherInput);
         int expectedResult = 6;
         assertThat(testResult).isEqualTo(expectedResult);
     }
     @Test
-    void inputFiveNumbersSeperatedByOtherGivenDelimiterAndReturnSum(){
+    void inputFiveNumbersSeperatedByOtherDelimitersAndReturnSum(){
         String twoNumberStringSeperatedByOtherInput = "1\\n2,3,5\\n2";
         int testResult = stringCalculator.sum(twoNumberStringSeperatedByOtherInput);
         int expectedResult = 13;
+        assertThat(testResult).isEqualTo(expectedResult);
+    }
+
+    @Test
+    void testingWithSearchingIndexAndSplitting(){
+        String testStringWithTwoSameSubstrings = "//;\\n1;2\\n3";
+        /*
+        System.out.println(testStringWithTwoSameSubstrings.indexOf("\\n"));
+        System.out.println(testStringWithTwoSameSubstrings.startsWith("//"));
+        String numberSeperator = "\\n";
+        String[] substringsNumbersAndDelimiter = testStringWithTwoSameSubstrings.split(Pattern.quote(numberSeperator), 2);
+        for(String substring : substringsNumbersAndDelimiter){
+            System.out.println(substring);
+            System.out.println("");
+        }
+        System.out.println(substringsNumbersAndDelimiter[0].substring(2,substringsNumbersAndDelimiter.length + 1));
+        */
+    }
+
+    @Test
+    void specifyPointCommaAsDelimiterInStringReturnSum3(){
+        String twoNumbersSpecifyingPointCommaAsDelimiter = "//;\\n1;2";
+        int testResult = stringCalculator.sum(twoNumbersSpecifyingPointCommaAsDelimiter);
+        int expectedResult = 3;
         assertThat(testResult).isEqualTo(expectedResult);
     }
 
